@@ -1,3 +1,27 @@
+# Work In Progress!
+
+- Setting up systemd and installing k3s works!
+- Setting up internet connection in WSL2 Ubuntu 20.04 behind a Corporate VPN works!
+- ... but these two together don't work. Needs to be debugged further
+
+```
+$ sudo ./wsl-vpnkit-setup.sh --no-docker
+Setup complete!
+Job for wsl-vpnkit.service failed because the control process exited with error code.
+See "systemctl status wsl-vpnkit.service" and "journalctl -xe" for details.
+$ systemctl status wsl-vpnkit.service
+● wsl-vpnkit.service
+     Loaded: loaded (/etc/init.d/wsl-vpnkit; generated)
+     Active: failed (Result: exit-code) since Fri 2021-09-24 22:42:22 EEST; 15s ago
+       Docs: man:systemd-sysv-generator(8)
+    Process: 1092 ExecStart=/etc/init.d/wsl-vpnkit start (code=exited, status=1/FAILURE)
+
+systemd[1]: Starting wsl-vpnkit.service...
+systemd[1]: wsl-vpnkit.service: Control process exited, code=exited, status=1/FAILURE
+systemd[1]: wsl-vpnkit.service: Failed with result 'exit-code'.
+systemd[1]: Failed to start wsl-vpnkit.service.
+```
+
 # Get k3s working on wsl2 Ubuntu 20.04
 
 Requirements:
